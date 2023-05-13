@@ -1,5 +1,6 @@
 import '../bootstrap'
 import '../styles/index.css'
+// @ts-ignore: Unreachable code error
 // eslint-disable-next-line simple-import-sort/imports
 import { Arwes, ThemeProvider, Button, Heading, Paragraph, createTheme } from 'arwes';
 import { i18n } from '@lingui/core'
