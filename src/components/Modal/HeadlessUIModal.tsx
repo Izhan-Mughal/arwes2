@@ -13,7 +13,9 @@ import SubmittedModalContent, { SubmittedModalContentProps } from 'app/component
 import { classNames } from 'app/functions'
 import { cloneElement, FC, isValidElement, ReactNode, useCallback, useMemo, useState } from 'react'
 import React, { Fragment } from 'react'
-
+// @ts-ignore: Unreachable code error
+// eslint-disable-next-line simple-import-sort/imports
+import { Arwes, ThemeProvider, Button, Heading, Paragraph, Frame, createTheme, SoundsProvider, createSounds, withSounds } from 'arwes';
 const MAX_WIDTH_CLASS_MAPPING = {
   sm: 'lg:max-w-sm',
   md: 'lg:max-w-md',
@@ -130,7 +132,11 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
           <span className="inline-block h-screen align-middle" aria-hidden="true">
             &#8203;
           </span>
-
+          <Frame animate={true}
+                  level={3}
+                  corners={2}
+                  className="w-max mx-auto"
+                  layer='primary'>
           <Transition.Child
             unmount={unmount}
             as={Fragment}
@@ -141,9 +147,10 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
+            
             <div
               className={classNames(
-                transparent ? '' : 'bg-dark-900 border border-dark-800',
+                transparent ? '' : ' ',
                 isDesktop ? MAX_WIDTH_CLASS_MAPPING[maxWidth] : '',
                 isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
                 'inline-block align-bottom rounded-xl text-left overflow-hidden transform p-4'
@@ -152,6 +159,7 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
               {children}
             </div>
           </Transition.Child>
+            </Frame>
         </div>
       </Dialog>
     </Transition>
