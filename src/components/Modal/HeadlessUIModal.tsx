@@ -63,8 +63,8 @@ const HeadlessUiModal: HeadlessUiModalType<Props> = ({ children: childrenProp, t
       typeof triggerProp === 'function'
         ? triggerProp({ onClick, open, setOpen })
         : isValidElement(triggerProp)
-        ? cloneElement(triggerProp, { onClick })
-        : null,
+          ? cloneElement(triggerProp, { onClick })
+          : null,
     [onClick, open, triggerProp]
   )
 
@@ -132,11 +132,7 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
           <span className="inline-block h-screen align-middle" aria-hidden="true">
             &#8203;
           </span>
-          <Frame animate={true}
-                  level={3}
-                  corners={2}
-                  className="w-max mx-auto"
-                  layer='primary'>
+
           <Transition.Child
             unmount={unmount}
             as={Fragment}
@@ -147,19 +143,31 @@ const HeadlessUiModalControlled: FC<ControlledModalProps> = ({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            
             <div
-              className={classNames(
-                transparent ? '' : ' ',
-                isDesktop ? MAX_WIDTH_CLASS_MAPPING[maxWidth] : '',
-                isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
-                'inline-block align-bottom rounded-xl text-left overflow-hidden transform p-4'
-              )}
+            className={classNames(
+                  transparent ? '' : ' ',
+                  isDesktop ? MAX_WIDTH_CLASS_MAPPING[maxWidth] : '',
+                  isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
+                  'inline-block align-bottom rounded-xl text-left  p-4'
+                )}
+
             >
-              {children}
+              <Frame animate={true}
+                level={3}
+                corners={2}
+                layer='primary'>
+                <div className={classNames(
+                  transparent ? '' : ' ',
+                  isDesktop ? MAX_WIDTH_CLASS_MAPPING[maxWidth] : '',
+                  isDesktop ? `w-full` : 'w-[85vw] max-h-[85vh] overflow-y-auto mx-auto',
+                  'inline-block align-bottom rounded-xl text-left overflow-hidden transform p-4'
+                )}>
+
+                  {children}
+                </div>
+              </Frame>
             </div>
           </Transition.Child>
-            </Frame>
         </div>
       </Dialog>
     </Transition>

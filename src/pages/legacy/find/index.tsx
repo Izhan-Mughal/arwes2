@@ -22,7 +22,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
-
+// @ts-ignore: Unreachable code error
+// eslint-disable-next-line simple-import-sort/imports
+import { Arwes, ThemeProvider,  Heading, Paragraph, Frame, createTheme, SoundsProvider, createSounds, withSounds } from 'arwes';
 enum Fields {
   TOKEN0 = 0,
   TOKEN1 = 1,
@@ -100,7 +102,12 @@ export default function PoolFinder() {
         }
         type="information"
       />
-      <div className="relative p-4 space-y-4 rounded bg-dark-900 shadow-liquidity flex flex-col justify-between flex-1 rewards rounded-3xl flex flex-col gap-3 p-2 md:p-4 pt-4 rounded-[16px] bg-blue-100 bg-opacity-25 shadow-md border-2 border-cyan-500 border-opacity-50">
+      <Frame animate={true}
+                  level={3}
+                  corners={2}
+                  className="w-100"
+                  layer='primary'>
+      <div className="relative p-4 space-y-4 rounded  shadow-liquidity flex flex-col justify-between flex-1 rewards rounded-3xl flex flex-col gap-3 p-2 md:p-4 pt-4 rounded-[16px]  bg-opacity-25 shadow-md  border-opacity-50">
 
         <AutoColumn gap={'md'}>
           <CurrencySelectPanel
@@ -112,11 +119,17 @@ export default function PoolFinder() {
           />
           <AutoColumn justify="space-between">
             <AutoRow justify={'flex-start'} style={{ padding: '0 1rem' }}>
-              <button className="z-10 -mt-6 -mb-6 rounded-full bg-dark-900 p-3px">
-                <div className="p-3 rounded-full bg-dark-800 hover:bg-dark-700">
+            <Frame animate={true}
+                  level={3}
+                  corners={2}
+                  className="w-100"
+                  layer='primary'>
+              <button className="z-10 ">
+                <div className="px-3 pt-3 rounded-full ">
                   <Plus size="32" />
                 </div>
               </button>
+              </Frame>
             </AutoRow>
           </AutoColumn>
           <CurrencySelectPanel
@@ -182,6 +195,7 @@ export default function PoolFinder() {
           </div>
         )}
       </div>
+      </Frame>
     </Container>
   )
 }
