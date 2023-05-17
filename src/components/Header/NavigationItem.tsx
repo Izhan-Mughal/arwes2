@@ -52,7 +52,8 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
     const { link, external } = node as MenuItemLeaf
     if (external) {
       return (
-        <SoundsProvider sounds={createSounds(sounds)}>
+        <div className='mt-3 mr-5 lg:mr-0 lg:mt-0'>
+                  <SoundsProvider sounds={createSounds(sounds)}>
           <Frame animate={true}
             level={3}
             corners={4}
@@ -74,46 +75,55 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
             </Typography>
           </Frame>
         </SoundsProvider>
+        </div>
+
       )
     }
     return (
-      <SoundsProvider sounds={createSounds(sounds)}>
-        <Frame animate={true}
-          level={3}
-          corners={4}
-          layer='primary'>
-          <Typography
-            onClick={() => router.push(link)}
-            weight={700}
-            variant="sm"
-            className={classNames(
-              router.asPath === link ? 'text-white' : '',
-              'hover:text-white font-bold py-2 px-2 rounded flex gap-3'
-            )}
-          >
-            <Player id="ask" content={node.title}>
-              {!isDesktop && node.icon}
+      <div className='mt-3 mr-5 lg:mr-0 lg:mt-0'>
 
-            </Player>
-          </Typography>
-        </Frame>
-      </SoundsProvider>
+
+        <SoundsProvider sounds={createSounds(sounds)}>
+          <Frame animate={true}
+            level={3}
+            corners={4}
+            layer='primary'
+            className="w-full "
+            >
+            <Typography
+              onClick={() => router.push(link)}
+              weight={700}
+              variant="sm"
+              className={classNames(
+                router.asPath === link ? 'text-white' : '',
+                'hover:text-white font-bold py-2 px-2 rounded flex gap-3'
+              )}
+            >
+              <Player id="ask" content={node.title}>
+                {!isDesktop && node.icon}
+
+              </Player>
+            </Typography>
+          </Frame>
+        </SoundsProvider>
+      </div>
     )
   }
 
   return (
     <Popover key={node.key} className="relative flex">
       {({ open }) => (
-        <div
+        <div className="w-full mt-3 mr-5 lg:mr-0 lg:mt-0"
           {...(!touchDevice && {
             onMouseEnter: () => handleToggle(open, 'enter'),
             onMouseLeave: () => handleToggle(open, 'leave'),
           })}
         >
-          <SoundsProvider sounds={createSounds(sounds)}>
+          <SoundsProvider sounds={createSounds(sounds)} className="w-full ">
             <Frame animate={true}
               level={3}
               corners={4}
+              className="w-full "
               layer='primary'>
               <Popover.Button ref={buttonRef}>
                 <Typography
@@ -138,10 +148,11 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Popover.Panel className="z-10 w-full absolute w-40 translate-y-[-8px] translate-x-[-8px]">
+              <Popover.Panel className="z-10 w-full absolute w-40 translate-y-[-8px] translate-x-[-8px] ">
                 <Frame animate={true}
                   level={3}
                   corners={4}
+                  
                   layer='primary'>
                   <div
                     className={classNames(
