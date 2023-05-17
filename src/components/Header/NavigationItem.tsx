@@ -21,7 +21,7 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
   const isDesktop = useDesktopMediaQuery()
   const touchDevice = useTouchDeviceMediaQuery()
   const showUseDexWarning = useDexWarningOpen()
-    // @ts-ignore
+  // @ts-ignore
   const Player = withSounds()(props => (
     <span
 
@@ -110,12 +110,12 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
             onMouseLeave: () => handleToggle(open, 'leave'),
           })}
         >
-          <Popover.Button ref={buttonRef}>
-            <SoundsProvider sounds={createSounds(sounds)}>
-              <Frame animate={true}
-                level={3}
-                corners={4}
-                layer='primary'>
+          <SoundsProvider sounds={createSounds(sounds)}>
+            <Frame animate={true}
+              level={3}
+              corners={4}
+              layer='primary'>
+              <Popover.Button ref={buttonRef}>
                 <Typography
                   weight={700}
                   variant="sm"
@@ -125,9 +125,9 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
                   <Player id="ask" content={node.title} />
                   <ChevronDownIcon strokeWidth={5} width={12} />
                 </Typography>
-              </Frame>
-            </SoundsProvider>
-          </Popover.Button>
+              </Popover.Button>
+            </Frame>
+          </SoundsProvider>
           {node.hasOwnProperty('items') && (
             <Transition
               as={Fragment}
@@ -139,33 +139,33 @@ export const NavigationItem: FC<NavigationItem> = ({ node }) => {
               leaveTo="transform opacity-0 scale-95"
             >
               <Popover.Panel className="z-10 w-full absolute w-40 translate-y-[-8px] translate-x-[-8px]">
-              <Frame animate={true}
-                level={3}
-                corners={4}
-                layer='primary'>
-                <div
-                  className={classNames(
-                    'shadow-md shadow-black/40 border border-dark-700 rounded overflow-hidden',
-                    !touchDevice
-                      ? "backdrop-blur-fallback before:z-[-1] before:rounded before:absolute before:w-full before:h-full before:content-['']  bg-white bg-opacity-[0.02]"
-                      : 'bg-dark-800 inset-0',
-                    showUseDexWarning ? 'before:backdrop-blur-[40px]' : 'before:backdrop-blur-[20px]'
-                  )}
-                >
-                  {(node as MenuItemNode).items.map((leaf) => (
-                    <Typography
-                      variant="sm"
-                      weight={700}
-                      key={leaf.key}
-                      onClick={() => {
-                        router.push(leaf.link).then(() => buttonRef?.current?.click())
-                      }}
-                      className="relative px-3 py-2 m-1 rounded-lg hover:cursor-pointer hover:text-white hover:bg-white/10"
-                    >
-                      {leaf.title}
-                    </Typography>
-                  ))}
-                </div>
+                <Frame animate={true}
+                  level={3}
+                  corners={4}
+                  layer='primary'>
+                  <div
+                    className={classNames(
+                      'shadow-md shadow-black/40 border border-dark-700 rounded overflow-hidden',
+                      !touchDevice
+                        ? "backdrop-blur-fallback before:z-[-1] before:rounded before:absolute before:w-full before:h-full before:content-['']  bg-white bg-opacity-[0.02]"
+                        : 'bg-dark-800 inset-0',
+                      showUseDexWarning ? 'before:backdrop-blur-[40px]' : 'before:backdrop-blur-[20px]'
+                    )}
+                  >
+                    {(node as MenuItemNode).items.map((leaf) => (
+                      <Typography
+                        variant="sm"
+                        weight={700}
+                        key={leaf.key}
+                        onClick={() => {
+                          router.push(leaf.link).then(() => buttonRef?.current?.click())
+                        }}
+                        className="relative px-3 py-2 m-1 rounded-lg hover:cursor-pointer hover:text-white hover:bg-white/10"
+                      >
+                        {leaf.title}
+                      </Typography>
+                    ))}
+                  </div>
                 </Frame>
               </Popover.Panel>
             </Transition>

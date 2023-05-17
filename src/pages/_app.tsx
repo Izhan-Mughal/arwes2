@@ -158,19 +158,25 @@ function MyApp({ Component, pageProps, fallback, err }) {
                         <MultichainExploitAlertModal />
                         {/*@ts-ignore TYPE NEEDS FIXING*/}
                         {hydrated ? (
+                          <>
+                            <Arwes animate show  >
+                              <Layout>
+                                <Guard>
+                                  <Component  {...pageProps} />
+                                </Guard>
+                              </Layout>
+                            </Arwes>
+                            <Portals />
 
-                          <Arwes animate show  >
-                            <Layout>
-                              <Guard>
-                                <Component  {...pageProps} />
-                              </Guard>
-                              <Portals />
-                            </Layout>
-                          </Arwes>
-
+                          </>
 
                         ) : (
-                          <Component {...pageProps} />
+                          <Layout>
+                            <Guard>
+                              <Component  {...pageProps} />
+                            </Guard>
+                            <Portals />
+                          </Layout>
                         )}
 
 
