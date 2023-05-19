@@ -7,7 +7,7 @@ import TransactionPopup from './TransactionPopup'
 // @ts-ignore: Unreachable code error
 // eslint-disable-next-line simple-import-sort/imports
 import { Arwes, ThemeProvider, Heading, Paragraph, Frame, createTheme, SoundsProvider, createSounds, withSounds } from 'arwes';
-import FarmListItem from './FarmListItem'
+
 // @ts-ignore TYPE NEEDS FIXING
 const AnimatedFader = ({ duration }) => (
   <div className="h-[3px] bg-dark-800 w-full">
