@@ -159,7 +159,7 @@ function MyApp({ Component, pageProps, fallback, err }) {
                         {/*@ts-ignore TYPE NEEDS FIXING*/}
                         {hydrated ? (
                           <>
-                            <Arwes animate show  >
+                            <Arwes  animate show background='background.jpg' pattern='glow.png'>
                               <Layout>
                                 <Guard>
                                   <Component  {...pageProps} />

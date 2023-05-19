@@ -224,7 +224,7 @@ const AssetInputPanel = ({
           className={classNames(
             error ? 'border-red border-opacity-40' : 'border-dark-800',
             size === 'md' ? 'py-4' : 'py-2',
-            'flex gap-2 py-4 px-3 items-center border-b justify-between flex-row'
+            'flex gap-2 py-4 px-3 items-start border-b justify-between flex-row'
           )}
         >
           <div className="flex flex-row flex-1">
